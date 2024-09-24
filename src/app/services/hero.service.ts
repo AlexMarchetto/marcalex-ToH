@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HeroInterface } from '../data/heroInterface';
-import { HEROES } from '../data/mock-heroes';
-import { Observable, of } from 'rxjs';
-import { MessageService } from './message.service';
+import {Injectable} from '@angular/core';
+import {HeroInterface} from '../data/heroInterface';
+import {HEROES} from '../data/mock-heroes';
+import {Observable, of} from 'rxjs';
+import {MessageService} from './message.service';
+import {Hero} from "../data/hero.model";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class HeroService {
     const hero = HEROES.find(h => h.id === id)!;
     this.messageService.add(`HeroService: fetched hero id=${id}`);
     return of(hero);
+  }
+
+  getHeroesClass(): Hero[] {
+    return HEROES.map(hero => new Hero(hero.id,hero.name, hero.attack, hero.dodge, hero.damage, hero.hp))
   }
 
 }

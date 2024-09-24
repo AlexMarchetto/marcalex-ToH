@@ -1,0 +1,27 @@
+<div *ngIf="hero">
+  <div>
+    <label for="name">Hero name: </label>
+    <input id="name" [(ngModel)]="hero.name"
+           placeholder="name">
+  </div>
+  <div>
+    <label for="attack">Hero attack: </label>
+    <input id="attack" [(ngModel)]="hero.attack"
+           placeholder="attack" type="number">
+  </div>
+  <div>
+    <label for="dodge">Hero dodge: </label>
+    <input id="dodge" [(ngModel)]="hero.dodge"
+           placeholder="dodge" type="number">
+  </div>
+  <div>
+    <label for="damage">Hero damage: </label>
+    <input id="damage" [(ngModel)]="hero.damage"
+           placeholder="damage" type="number">
+  </div>
+  <div>
+    <label for="hp">Hero hp: </label>
+    <input id="hp" [(ngModel)]="hero.hp"
+           placeholder="hp" type="number">
+  </div>
+</div>

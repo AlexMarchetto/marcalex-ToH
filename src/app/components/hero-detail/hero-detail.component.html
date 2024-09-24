@@ -2,11 +2,10 @@
   <h2>{{hero.name | uppercase}} Details</h2>
   <div><span>id: </span>{{ hero.id }}</div>
   <div><span>name: </span>{{ hero.name }}</div>
-  <div>
-    12
-    <label for="name">Hero name: </label>
-    <input id="name" [(ngModel)]="hero.name"
-           placeholder="name">
-  </div>
+  <div><span>attack: </span>{{ hero.attack }}</div>
+  <div><span>dodge: </span>{{ hero.dodge }}</div>
+  <div><span>damage: </span>{{ hero.damage }}</div>
+  <div><span>hp: </span>{{ hero.hp }}</div>
+  <app-hero-editor></app-hero-editor>
   <button type="button" (click)="goBack()">go back</button>
 </div>

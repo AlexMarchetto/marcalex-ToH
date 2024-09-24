@@ -1,24 +1,22 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {HeroInterface} from "../../data/heroInterface";
-import {NgIf, UpperCasePipe, Location} from "@angular/common";
-import {FormsModule, NgModel} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {HeroService} from "../../services/hero.service";
-import {HeroEditorComponent} from "../hero-editor/hero-editor.component";
+import {Location, NgIf} from "@angular/common";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @Component({
-  selector: 'app-hero-detail',
+  selector: 'app-hero-editor',
   standalone: true,
   imports: [
-    UpperCasePipe,
+    ReactiveFormsModule,
     FormsModule,
-    NgIf,
-    HeroEditorComponent,
+    NgIf
   ],
-  templateUrl: './hero-detail.component.html',
-  styleUrl: './hero-detail.component.css'
+  templateUrl: './hero-editor.component.html',
+  styleUrl: './hero-editor.component.css'
 })
-export class HeroDetailComponent {
+export class HeroEditorComponent {
   @Input() hero?: HeroInterface;
   constructor(
     private route : ActivatedRoute,
