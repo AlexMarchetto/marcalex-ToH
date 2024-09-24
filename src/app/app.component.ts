@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {RouterLink, RouterOutlet} from '@angular/router';
+import {HeroesComponent} from "./components/heroes/heroes.component";
+import {MessagesComponent} from "./components/messages/messages.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HeroesComponent, MessagesComponent, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'marcalex-ToH2024';
+  title = 'Alex MARCHETTO Tour of Heroes 2024';
 }
