@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {HeroInterface} from "../../data/heroInterface";
 import {NgForOf, NgIf, UpperCasePipe} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {HEROES} from '../../data/mock-heroes';
@@ -19,7 +18,6 @@ import {Hero} from "../../data/hero.model";
 })
 export class HeroesComponent {
   heroes: Hero[] = [];
-  selectedHero?: HeroInterface;
 
   constructor(private heroService: HeroService) { }
 
@@ -28,6 +26,6 @@ export class HeroesComponent {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroesClass().subscribe(heroes => this.heroes = heroes)
+    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes)
   }
 }

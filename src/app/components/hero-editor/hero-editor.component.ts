@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {HeroService} from "../../services/hero.service";
 import {Location, NgIf} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {Hero} from "../../data/hero.model";
 
 @Component({
   selector: 'app-hero-editor',
@@ -17,7 +18,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   styleUrl: './hero-editor.component.css'
 })
 export class HeroEditorComponent {
-  @Input() hero?: HeroInterface;
+  @Input() hero?: Hero;
   constructor(
     private route : ActivatedRoute,
     private heroService: HeroService,
@@ -29,11 +30,13 @@ export class HeroEditorComponent {
   }
 
   getHero(): void {
-    const id = Number(this.route.snapshot.paramMap.get("id"));
+    const id = Number(this.route.snapshot.paramMap.get("id"))
     this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
+      .subscribe(hero => this.hero = hero)
 
   }
+
+
 
   goBack(): void {
     this.location.back();

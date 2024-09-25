@@ -3,6 +3,7 @@ import { HeroInterface } from '../../data/heroInterface';
 import { HeroService } from '../../services/hero.service';
 import {NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {Hero} from "../../data/hero.model";
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +16,7 @@ import {RouterLink} from "@angular/router";
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  heroes: HeroInterface[] = [];
+  heroes: Hero[] = [];
 
   constructor(private heroService: HeroService) { }
 
