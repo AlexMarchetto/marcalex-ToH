@@ -7,6 +7,7 @@ import {HeroDetailComponent} from "../hero-detail/hero-detail.component";
 import { HeroService } from '../../services/hero.service';
 import {MessageService} from "../../services/message.service";
 import {RouterLink} from "@angular/router";
+import {Hero} from "../../data/hero.model";
 
 @Component({
   selector: 'app-heroes',
@@ -17,17 +18,16 @@ import {RouterLink} from "@angular/router";
   styleUrl: './heroes.component.css'
 })
 export class HeroesComponent {
-  heroes: HeroInterface[] = [];
+  heroes: Hero[] = [];
   selectedHero?: HeroInterface;
 
   constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getHeroes()
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes);
+    this.heroService.getHeroesClass().subscribe(heroes => this.heroes = heroes)
   }
 }

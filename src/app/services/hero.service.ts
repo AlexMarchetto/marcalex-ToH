@@ -26,8 +26,9 @@ export class HeroService {
     return of(hero);
   }
 
-  getHeroesClass(): Hero[] {
-    return HEROES.map(hero => new Hero(hero.id,hero.name, hero.attack, hero.dodge, hero.damage, hero.hp))
+  getHeroesClass(): Observable<Hero[]> {
+    const heroes = HEROES.map(hero => new Hero(hero.id,hero.name, hero.attack, hero.dodge, hero.damage, hero.hp))
+    return of(heroes)
   }
 
 }
