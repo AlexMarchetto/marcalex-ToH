@@ -1,5 +1,4 @@
-import { HeroInterface } from './heroInterface';
-export const HEROES: HeroInterface[] = [
+export const HEROES = [
   { id: 12, name: 'Dr. Nice', attack: 10, dodge: 10, damage: 10, hp: 10 },
   { id: 13, name: 'Bombasto', attack: 10, dodge: 10, damage: 10, hp: 10 },
   { id: 14, name: 'Celeritas', attack: 10, dodge: 10, damage: 10, hp: 10 },

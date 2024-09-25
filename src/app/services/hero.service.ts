@@ -32,5 +32,23 @@ export class HeroService {
     }
   }
 
+  updateHero(hero: Hero): Observable<any> {
+    // Ici tu peux mettre à jour les données dans HEROES ou effectuer une requête HTTP
+    const index = HEROES.findIndex(h => h.id === hero.id);
+    if (index !== -1) {
+      HEROES[index] = {
+        id: hero.id,
+        name: hero.name,
+        attack: hero.attack,
+        dodge: hero.dodge,
+        damage: hero.damage,
+        hp: hero.hp
+      };
+      this.messageService.add(`HeroService: updated hero id=${hero.id}`);
+    }
+    return of(null);  // Remplace `of(null)` par une vraie requête HTTP si nécessaire
+  }
+
+
 }
 

@@ -16,7 +16,7 @@ import {Hero} from "../../data/hero.model";
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css'
 })
-export class HeroesComponent {
+export class HeroesComponent implements OnInit{
   heroes: Hero[] = [];
 
   constructor(private heroService: HeroService) { }

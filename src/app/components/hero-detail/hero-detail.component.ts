@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgIf, UpperCasePipe, Location} from "@angular/common";
 import {FormsModule, NgModel} from "@angular/forms";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {HeroService} from "../../services/hero.service";
 import {HeroEditorComponent} from "../hero-editor/hero-editor.component";
 import {Hero} from "../../data/hero.model";
@@ -14,11 +14,12 @@ import {Hero} from "../../data/hero.model";
     FormsModule,
     NgIf,
     HeroEditorComponent,
+    RouterLink,
   ],
   templateUrl: './hero-detail.component.html',
   styleUrl: './hero-detail.component.css'
 })
-export class HeroDetailComponent {
+export class HeroDetailComponent implements OnInit{
   @Input() hero?: Hero;
   constructor(
     private route : ActivatedRoute,

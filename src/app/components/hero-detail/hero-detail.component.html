@@ -6,6 +6,6 @@
   <div><span>dodge: </span>{{ hero.dodge }}</div>
   <div><span>damage: </span>{{ hero.damage }}</div>
   <div><span>hp: </span>{{ hero.hp }}</div>
-  <app-hero-editor></app-hero-editor>
-  <button type="button" (click)="goBack()">go back</button>
+  <button type="button" (click)="goBack()">Go back</button>
+  <button type="button" routerLink="/edit/{{hero.id}}">Edit</button>
 </div>
