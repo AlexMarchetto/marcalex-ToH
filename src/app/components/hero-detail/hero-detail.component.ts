@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgIf, UpperCasePipe, Location} from "@angular/common";
 import {FormsModule, NgModel} from "@angular/forms";
 import {ActivatedRoute, RouterLink} from "@angular/router";
-import {HeroService} from "../../services/hero.service";
+import {HeroService} from "../../services/hero/hero.service";
 import {HeroEditorComponent} from "../hero-editor/hero-editor.component";
 import {Hero} from "../../data/hero.model";
 

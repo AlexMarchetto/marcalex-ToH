@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HEROES} from '../data/mock-heroes';
+import {HEROES} from '../../data/mock-heroes';
 import {Observable, of} from 'rxjs';
-import {MessageService} from './message.service';
-import {Hero} from "../data/hero.model";
+import {MessageService} from '../message/message.service';
+import {Hero} from "../../data/hero.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,7 @@ export class HeroService {
   constructor(private messageService: MessageService) { }
 
   getHeroes(): Observable<Hero[]> {
+    //Création d'une nouvelle instance pour chaque héro
     const heroes = HEROES.map(hero => new Hero(hero.id,hero.name, hero.attack, hero.dodge, hero.damage, hero.hp));
     this.messageService.add('HeroService: fetched heroes');
     return of(heroes);
@@ -19,7 +20,6 @@ export class HeroService {
 
   getHero(id: number): Observable<Hero> {
     const hero = HEROES.find(hero => hero.id === id);
-
     if (hero) {
       // Si le héros est trouvé, créer une nouvelle instance de Hero
       this.messageService.add(`HeroService: fetched hero id=${id}`);
@@ -33,7 +33,6 @@ export class HeroService {
   }
 
   updateHero(hero: Hero): Observable<any> {
-    // Ici tu peux mettre à jour les données dans HEROES ou effectuer une requête HTTP
     const index = HEROES.findIndex(h => h.id === hero.id);
     if (index !== -1) {
       HEROES[index] = {
@@ -46,7 +45,7 @@ export class HeroService {
       };
       this.messageService.add(`HeroService: updated hero id=${hero.id}`);
     }
-    return of(null);  // Remplace `of(null)` par une vraie requête HTTP si nécessaire
+    return of(null);
   }
 
 

@@ -3,8 +3,8 @@ import {NgForOf, NgIf, UpperCasePipe} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {HEROES} from '../../data/mock-heroes';
 import {HeroDetailComponent} from "../hero-detail/hero-detail.component";
-import { HeroService } from '../../services/hero.service';
-import {MessageService} from "../../services/message.service";
+import { HeroService } from '../../services/hero/hero.service';
+import {MessageService} from "../../services/message/message.service";
 import {RouterLink} from "@angular/router";
 import {Hero} from "../../data/hero.model";
 
