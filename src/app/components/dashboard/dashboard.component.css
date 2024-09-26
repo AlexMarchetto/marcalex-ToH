@@ -1,10 +1,16 @@
 /* DashboardComponent's private CSS styles */
+.dashborad-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 75px;
+}
 
 h2 {
   text-align: center;
 }
 
-.heroes-menu {
+.menu {
   padding: 0;
   margin: auto;
   max-width: 1000px;

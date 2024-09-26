@@ -1,8 +1,21 @@
-<h2>Top Heroes</h2>
-<div class="heroes-menu">
-  <a *ngFor="let hero of heroes"
-    routerLink="/heroes/detail/{{hero.id}}">
-    {{hero.name}}
-  </a>
+<div class="dashborad-container">
+  <div>
+    <h2>Top Heroes</h2>
+    <div class="menu">
+      <a *ngFor="let hero of heroes"
+         routerLink="/heroes/detail/{{hero.id}}">
+        {{hero.name}}
+      </a>
+    </div>
+  </div>
+  <div>
+    <h2>Top Weapons</h2>
+    <div class ="menu">
+      <a *ngFor="let weapon of weapons"
+        routerLink="/weapons/detail/{{weapon.id}}">
+        {{weapon.name}}
+      </a>
+    </div>
+  </div>
 </div>
 
