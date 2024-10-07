@@ -1,7 +1,7 @@
 import {Weapon} from "./weapon.model";
 
 export class Hero {
-  private _id: number;
+  private _id: string;
   private _name: string;
   private _attack: number;
   private _dodge: number;
@@ -9,14 +9,14 @@ export class Hero {
   private _hp: number;
   private _weapon : Weapon | null;
 
-  constructor(id: number, name: string, attack:number, dodge: number, damage: number, hp: number, weapon: Weapon | null = null) {
+  constructor(id: string, name: string, attack:number, dodge: number, damage: number, hp: number, weapon: Weapon | null = null) {
     this._id = id;
     this._name = name;
     this._attack = attack;
     this._dodge = dodge;
     this._damage = damage;
     this._hp = hp;
-    this._weapon =weapon
+    this._weapon =weapon;
   }
 
   // Méthode pour valider si la répartition des points est correcte
@@ -39,11 +39,11 @@ export class Hero {
   }
 
   // GETTERS AND SETTERS OF ATTRIBUTES
-  get id(): number {
+  get id(): string {
     return this._id;
   }
 
-  set id(value: number) {
+  set id(value: string) {
     this._id = value;
   }
 
