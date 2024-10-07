@@ -6,6 +6,7 @@ import {HeroEditorComponent} from "./components/hero-editor/hero-editor.componen
 import {WeaponsComponent} from "./components/weapons/weapons.component";
 import {WeaponDetailComponent} from "./components/weapon-detail/weapon-detail.component";
 import {WeaponEditorComponent} from "./components/weapon-editor/weapon-editor.component";
+import {CustomComponent} from "./components/custom/custom.component";
 
 export const routes: Routes = [
   {path: 'heroes', component: HeroesComponent},
@@ -15,5 +16,6 @@ export const routes: Routes = [
   {path: 'heroes/edit/:id', component: HeroEditorComponent},
   {path: 'weapons', component: WeaponsComponent},
   {path: 'weapons/detail/:id', component: WeaponDetailComponent},
-  {path: 'weapons/edit/:id', component: WeaponEditorComponent}
+  {path: 'weapons/edit/:id', component: WeaponEditorComponent},
+  {path: 'custom', component: CustomComponent}
 ];

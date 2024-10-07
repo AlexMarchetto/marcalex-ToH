@@ -4,6 +4,7 @@ import {HeroService} from "../../services/hero/hero.service";
 import {Location, NgIf, UpperCasePipe} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Hero} from "../../data/hero.model";
+import {first} from "rxjs";
 
 @Component({
   selector: 'app-hero-editor',
@@ -30,8 +31,8 @@ export class HeroEditorComponent implements OnInit{
   }
 
   getHero(): void {
-    const id = Number(this.route.snapshot.paramMap.get("id"))
-    this.heroService.getHero(id)
+    const id = this.route.snapshot.paramMap.get("id");
+    this.heroService.getHero(id).pipe(first())
       .subscribe(hero => this.hero = hero)
 
   }

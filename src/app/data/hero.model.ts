@@ -1,3 +1,5 @@
+import {Weapon} from "./weapon.model";
+
 export class Hero {
   private _id: number;
   private _name: string;
@@ -5,14 +7,16 @@ export class Hero {
   private _dodge: number;
   private _damage: number;
   private _hp: number;
+  private _weapon : Weapon | null;
 
-  constructor(id: number, name: string, attack:number, dodge: number, damage: number, hp: number) {
+  constructor(id: number, name: string, attack:number, dodge: number, damage: number, hp: number, weapon: Weapon | null = null) {
     this._id = id;
     this._name = name;
     this._attack = attack;
     this._dodge = dodge;
     this._damage = damage;
     this._hp = hp;
+    this._weapon =weapon
   }
 
   // Méthode pour valider si la répartition des points est correcte
@@ -24,6 +28,14 @@ export class Hero {
   // Méthode pour calculer les points restants à attribuer
   remainingPoints(): number {
     return 40 - (this._attack + this._dodge + this._damage + this._hp);
+  }
+
+  haveWeapon(): boolean{
+    return this._weapon != null;
+  }
+
+  removeWeapon():void{
+    this._weapon = null;
   }
 
   // GETTERS AND SETTERS OF ATTRIBUTES
@@ -74,4 +86,13 @@ export class Hero {
   set hp(value: number) {
     this._hp = value;
   }
+
+  get weapon(): Weapon | null {
+    return this._weapon;
+  }
+
+  set weapon(value: Weapon) {
+    this._weapon = value;
+  }
+
 }

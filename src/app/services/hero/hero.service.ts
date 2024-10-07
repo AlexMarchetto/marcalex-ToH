@@ -3,33 +3,26 @@ import {HEROES} from '../../data/mock-heroes';
 import {Observable, of} from 'rxjs';
 import {MessageService} from '../message/message.service';
 import {Hero} from "../../data/hero.model";
+import {collection, collectionData, doc, docData, Firestore} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
 
-  constructor(private messageService: MessageService) { }
+  private static url = 'Heroes';
+
+  constructor(private messageService: MessageService, private firestore: Firestore) { }
 
   getHeroes(): Observable<Hero[]> {
-    //Création d'une nouvelle instance pour chaque héro
-    const heroes = HEROES.map(hero => new Hero(hero.id,hero.name, hero.attack, hero.dodge, hero.damage, hero.hp));
-    this.messageService.add('HeroService: fetched heroes');
-    return of(heroes);
+
+    const heroCollection = collection(this.firestore, HeroService.url)
+    return collectionData(heroCollection, {idField: 'id'}) as Observable<Hero[]>
   }
 
-  getHero(id: number): Observable<Hero> {
-    const hero = HEROES.find(hero => hero.id === id);
-    if (hero) {
-      // Si le héros est trouvé, créer une nouvelle instance de Hero
-      this.messageService.add(`HeroService: fetched hero id=${id}`);
-      const heroObject = new Hero(hero.id, hero.name, hero.attack, hero.dodge, hero.damage, hero.hp);
-      return of(heroObject);
-    } else {
-      // Si le héros n'est pas trouvé, gérer l'erreur
-      this.messageService.add(`HeroService: could not find hero id=${id}`);
-      return of();  // Retourne un Observable vide ou tu peux lever une erreur
-    }
+  getHero(id: string | null): Observable<Hero> {
+    const heroDoc = doc(this.firestore, HeroService.url + "/" + id);
+    return docData(heroDoc, {idField: 'id'}) as Observable<Hero>;
   }
 
   updateHero(hero: Hero): Observable<any> {
