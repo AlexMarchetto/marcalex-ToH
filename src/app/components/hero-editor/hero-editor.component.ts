@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {HeroService} from "../../services/hero/hero.service";
 import {Location, NgIf, UpperCasePipe} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -13,7 +13,8 @@ import {first} from "rxjs";
     ReactiveFormsModule,
     FormsModule,
     NgIf,
-    UpperCasePipe
+    UpperCasePipe,
+    RouterLink
   ],
   templateUrl: './hero-editor.component.html',
   styleUrl: './hero-editor.component.css'
@@ -54,8 +55,14 @@ export class HeroEditorComponent implements OnInit{
         console.error('Invalid hero: total points must not exceed 40 and each attribute must be at least 1');
       }
     }
+  }
 
-
+  delete():void {
+    if (this.hero){
+      this.heroService.deleteHero(this.hero.id).then(() => {
+        this.hero = undefined;
+      })
+    }
   }
 
   goBack(): void {

@@ -1,7 +1,8 @@
 <ul class="weapons">
   <li *ngFor="let weapon of weapons">
     <a routerLink="/weapons/detail/{{weapon.id}}">
-      <span class="badge">{{weapon.id}}</span> {{weapon.name}}
+      {{weapon.name}}
     </a>
   </li>
+  <a routerLink="/weapons/add"> Add Weapon</a>
 </ul>

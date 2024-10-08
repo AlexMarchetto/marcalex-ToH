@@ -1,5 +1,5 @@
 export class Weapon {
-  private _id: number;
+  private _id: string;
   private _name: string;
   private _attack: number;
   private _dodge: number;
@@ -7,7 +7,7 @@ export class Weapon {
   private _hp: number;
 
 
-  constructor(id: number, name: string, attack: number, dodge: number, damage: number, hp: number) {
+  constructor(id: string, name: string, attack: number, dodge: number, damage: number, hp: number) {
     this._id = id;
     this._name = name;
     this._attack = attack;
@@ -37,11 +37,11 @@ export class Weapon {
   }
 
   // GETTERS AND SETTERS OF ATTRIBUTES
-  get id(): number {
+  get id(): string {
     return this._id;
   }
 
-  set id(value: number) {
+  set id(value: string) {
     this._id = value;
   }
 

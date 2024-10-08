@@ -1,37 +1,39 @@
-<div class="attributs" *ngIf="hero">
-  <h2>{{hero.name | uppercase}} Edits</h2>
+<div class="hero-editor" *ngIf="hero">
+  <h2>{{ hero.name | uppercase }} Editor</h2>
+
   <div class="attribut">
-    <label for="name">Hero name: </label>
-    <input id="name" [(ngModel)]="hero.name"
-           placeholder="name">
-  </div>
-  <div class="attribut">
-    <label for="attack">Hero attack: </label>
-    <input id="attack" [(ngModel)]="hero.attack"
-           placeholder="attack" type="number">
-  </div>
-  <div class="attribut">
-    <label for="dodge">Hero dodge: </label>
-    <input id="dodge" [(ngModel)]="hero.dodge"
-           placeholder="dodge" type="number">
-  </div>
-  <div class="attribut">
-    <label for="damage">Hero damage: </label>
-    <input id="damage" [(ngModel)]="hero.damage"
-           placeholder="damage" type="number">
-  </div>
-  <div class="attribut">
-    <label for="hp">Hero hp: </label>
-    <input id="hp" [(ngModel)]="hero.hp"
-           placeholder="hp" type="number">
-  </div>
-  <div class="attribut">
-    <label>Remaining Points: </label>
-    <span>{{ hero.remainingPoints() }}</span>
-  </div>
-  <div class="buttons">
-    <button type="button" (click)="update(hero.name, hero.attack, hero.dodge, hero.damage,hero.hp)">Update</button>
-    <button type="button" (click)="goBack()">Go back</button>
+    <label for="name">Hero Name</label>
+    <input id="name" [(ngModel)]="hero.name" placeholder="Name">
   </div>
 
+  <div class="attribut">
+    <label for="attack">Hero Attack</label>
+    <input id="attack" [(ngModel)]="hero.attack" type="number" placeholder="Attack">
+  </div>
+
+  <div class="attribut">
+    <label for="dodge">Hero Dodge</label>
+    <input id="dodge" [(ngModel)]="hero.dodge" type="number" placeholder="Dodge">
+  </div>
+
+  <div class="attribut">
+    <label for="damage">Hero Damage</label>
+    <input id="damage" [(ngModel)]="hero.damage" type="number" placeholder="Damage">
+  </div>
+
+  <div class="attribut">
+    <label for="hp">Hero HP</label>
+    <input id="hp" [(ngModel)]="hero.hp" type="number" placeholder="HP">
+  </div>
+
+  <div class="attribut">
+    <label>Remaining Points:</label>
+    <span class="remaining-points">{{ hero.remainingPoints() }}</span>
+  </div>
+
+  <div class="buttons">
+    <button class="btn-primary" (click)="update(hero.name, hero.attack, hero.dodge, hero.damage, hero.hp)">Update</button>
+    <button class="btn-secondary" (click)="goBack()">Go Back</button>
+    <button class="btn-danger" (click)="delete()" routerLink="/heroes">Delete</button>
+  </div>
 </div>

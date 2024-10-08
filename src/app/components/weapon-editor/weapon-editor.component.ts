@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {WeaponService} from "../../services/weapon/weapon.service";
 import {Location, NgIf, UpperCasePipe} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-weapon-editor',
@@ -30,8 +31,8 @@ export class WeaponEditorComponent implements OnInit{
   }
 
   getWeapon(): void {
-    const id = Number(this.route.snapshot.paramMap.get("id"));
-    this.weaponService.getWeapon(id)
+    const id = this.route.snapshot.paramMap.get("id");
+    this.weaponService.getWeapon(id).pipe(first())
       .subscribe((weapon => this.weapon = weapon))
   }
 
@@ -47,14 +48,12 @@ export class WeaponEditorComponent implements OnInit{
       if (this.weapon.isValid()) {
         // Si le héros est valide, appeler le service pour sauvegarder les modifications
         this.weaponService.updateWeapon(this.weapon)
-          .subscribe(() => this.goBack());
+        this.goBack()
       } else {
         // Gérer le cas où le héros n'est pas valide (par exemple, afficher un message d'erreur)
         console.error('Invalid weapon: total points must not equal 0 and each attribute must be between -5 and 5');
       }
     }
-
-
   }
 
   goBack(): void {

@@ -1,0 +1,26 @@
+<div class="hero-add-container" *ngIf="hero">
+  <h2>Ajouter un nouveau héros</h2>
+  <form (ngSubmit)="add()" class="hero-form">
+    <div class="form-group">
+      <label for="name">Nom du Héros :</label>
+      <input id="name" [(ngModel)]="hero.name" name="name" placeholder="Jordan Bardella" required>
+    </div>
+    <div class="form-group">
+      <label for="attack">Attaque :</label>
+      <input id="attack" type="number" [(ngModel)]="hero.attack" name="attack" required>
+    </div>
+    <div class="form-group">
+      <label for="dodge">Esquive :</label>
+      <input id="dodge" type="number" [(ngModel)]="hero.dodge" name="dodge" required>
+    </div>
+    <div class="form-group">
+      <label for="damage">Dégâts :</label>
+      <input id="damage" type="number" [(ngModel)]="hero.damage" name="damage" required>
+    </div>
+    <div class="form-group">
+      <label for="hp">Points de vie :</label>
+      <input id="hp" type="number" [(ngModel)]="hero.hp" name="hp" required>
+    </div>
+    <button type="submit" class="btn-add">Ajouter Héros</button>
+  </form>
+</div>

@@ -1,11 +1,17 @@
-<div *ngIf="hero">
-  <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{ hero.id }}</div>
-  <div><span>name: </span>{{ hero.name }}</div>
-  <div><span>attack: </span>{{ hero.attack }}</div>
-  <div><span>dodge: </span>{{ hero.dodge }}</div>
-  <div><span>damage: </span>{{ hero.damage }}</div>
-  <div><span>hp: </span>{{ hero.hp }}</div>
-  <button type="button" (click)="goBack()">Go back</button>
-  <button type="button" routerLink="/heroes/edit/{{hero.id}}">Edit</button>
+<div class="hero-detail" *ngIf="hero">
+  <h2>{{ hero.name | uppercase }} Details</h2>
+
+  <div class="hero-info">
+    <div><span class="label">ID: </span><span>{{ hero.id }}</span></div>
+    <div><span class="label">Name: </span><span>{{ hero.name }}</span></div>
+    <div><span class="label">Attack: </span><span>{{ hero.attack }}</span></div>
+    <div><span class="label">Dodge: </span><span>{{ hero.dodge }}</span></div>
+    <div><span class="label">Damage: </span><span>{{ hero.damage }}</span></div>
+    <div><span class="label">HP: </span><span>{{ hero.hp }}</span></div>
+  </div>
+
+  <div class="hero-actions">
+    <button class="btn-primary" (click)="goBack()">Go Back</button>
+    <button class="btn-secondary" routerLink="/heroes/edit/{{ hero.id }}">Edit</button>
+  </div>
 </div>

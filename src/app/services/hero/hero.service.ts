@@ -1,9 +1,17 @@
 import {Injectable} from '@angular/core';
-import {HEROES} from '../../data/mock-heroes';
 import {map, Observable, of} from 'rxjs';
 import {MessageService} from '../message/message.service';
 import {Hero} from "../../data/hero.model";
-import {collection, collectionData, doc, docData, Firestore, updateDoc} from "@angular/fire/firestore";
+import {
+  addDoc,
+  collection,
+  collectionData,
+  deleteDoc,
+  doc,
+  docData,
+  Firestore,
+  updateDoc
+} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +23,6 @@ export class HeroService {
   constructor(private messageService: MessageService, private firestore: Firestore) { }
 
   getHeroes(): Observable<Hero[]> {
-
     const heroCollection = collection(this.firestore, HeroService.url)
     this.messageService.add('HeroService: fetched heroes')
     return collectionData(heroCollection, { idField: 'id' }).pipe(
@@ -59,16 +66,46 @@ export class HeroService {
       attack: hero.attack,
       dodge: hero.dodge,
       damage: hero.damage,
-      hp: hero.hp};
+      hp: hero.hp
+    };
     updateDoc(heroDoc, newHeroJSON)
       .then(() => {
         this.messageService.add(`HeroService: updated hero id=${hero.id}`)
       }).catch(error => {
         console.error("Error updating hero: ", error);
         this.messageService.add(`HeroService: failed to update hero id=${hero.id}`)
-    })
+    });
   }
 
+  async deleteHero(id: string): Promise<void>{
+    const heroDocument = doc(this.firestore, HeroService.url + "/" + id);
+    return deleteDoc(heroDocument)
+      .then(() => {
+        this.messageService.add(`HeroService: deleted hero id=${id}`);
+      }).catch(error => {
+        console.log("Error deleting hero: ", error)
+        this.messageService.add(`HeroService: failed to delete hero id=${id}`);
+      });
+  }
 
+  async addHero(hero: Hero): Promise<void> {
+    const heroCollection = collection(this.firestore, HeroService.url);
+    const newHeroJSON = {
+      name: hero.name,
+      attack: hero.attack,
+      dodge: hero.dodge,
+      damage: hero.damage,
+      hp: hero.hp
+    };
+
+    return addDoc(heroCollection, newHeroJSON)
+      .then(() => {
+        console.log(`Hero added: ${hero.name}`);
+      })
+      .catch((error) => {
+        console.error("Error adding hero: ", error);
+        throw error;  // On renvoie l'erreur pour que le composant puisse la traiter
+      });
+  }
 }
 

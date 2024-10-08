@@ -1,0 +1,26 @@
+<div *ngIf="weapon">
+  <h2>Add New Weapon</h2>
+  <form (ngSubmit)="add()">
+    <div>
+      <label for="name">Weapon Name:</label>
+      <input id="name" [(ngModel)]="weapon.name" name="name" required>
+    </div>
+    <div>
+      <label for="attack">Attack:</label>
+      <input id="attack" type="number" [(ngModel)]="weapon.attack" name="attack" required>
+    </div>
+    <div>
+      <label for="dodge">Dodge:</label>
+      <input id="dodge" type="number" [(ngModel)]="weapon.dodge" name="dodge" required>
+    </div>
+    <div>
+      <label for="damage">Damage:</label>
+      <input id="damage" type="number" [(ngModel)]="weapon.damage" name="damage" required>
+    </div>
+    <div>
+      <label for="hp">HP:</label>
+      <input id="hp" type="number" [(ngModel)]="weapon.hp" name="hp" required>
+    </div>
+    <button type="submit">Add Hero</button>
+  </form>
+</div>
