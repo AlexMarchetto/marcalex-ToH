@@ -1,26 +1,30 @@
-<div *ngIf="weapon">
+<div class="weapon-add-container" *ngIf="weapon">
   <h2>Add New Weapon</h2>
-  <form (ngSubmit)="add()">
-    <div>
+  <form (ngSubmit)="add()" class="weapon-form">
+    <div class="form-group">
       <label for="name">Weapon Name:</label>
-      <input id="name" [(ngModel)]="weapon.name" name="name" required>
+      <input id="name" [(ngModel)]="weapon.name" name="name" placeholder="Epée du ciel" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="attack">Attack:</label>
       <input id="attack" type="number" [(ngModel)]="weapon.attack" name="attack" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="dodge">Dodge:</label>
       <input id="dodge" type="number" [(ngModel)]="weapon.dodge" name="dodge" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="damage">Damage:</label>
       <input id="damage" type="number" [(ngModel)]="weapon.damage" name="damage" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="hp">HP:</label>
       <input id="hp" type="number" [(ngModel)]="weapon.hp" name="hp" required>
     </div>
-    <button type="submit">Add Hero</button>
+    <div class="form-group">
+      <label>Remaining Points:</label>
+      <span class="remaining-points">{{ weapon.remainingPoints() }}</span>
+    </div>
+    <button type="submit" class="btn-add">Add Hero</button>
   </form>
 </div>

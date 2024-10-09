@@ -1,0 +1,155 @@
+/* Style général du layout avec flexbox */
+html{
+
+}
+.custom-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 50px 0 0 0 ;
+  gap: 20px;
+  width: 100%;
+  height: 82vh; /* Prend toute la hauteur de la fenêtre */
+  background-color: #f8f9fa;
+
+}
+
+.custom-layout div {
+  height: 93%;
+}
+
+/* Section des héros à gauche */
+.heroes-section {
+  flex: 1; /* Prend 1 part de l'espace disponible */
+  background-color: #ecf0f1;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.heroes {
+  list-style-type: none;
+  padding: 0;
+}
+
+.heroes li {
+  padding: 10px;
+  margin-bottom: 8px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.heroes li:hover {
+  background-color: #2980b9;
+}
+
+.heroes li.selected, .heroes li.selected:hover {
+  background-color: #324f60;
+}
+
+.heroes a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+/* Espace central pour les détails futurs */
+.center-section {
+  flex: 2; /* Prend 2 parts de l'espace disponible */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.center-section div {
+  height: 200px;
+}
+
+.details-placeholder {
+  color: #7f8c8d;
+  font-size: 1.2rem;
+}
+
+/* Section des armes à droite */
+.weapons-section {
+  flex: 1; /* Prend 1 part de l'espace disponible */
+  background-color: #ecf0f1;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.weapons {
+  list-style-type: none;
+  padding: 0;
+}
+
+.weapons li {
+  padding: 10px;
+  margin-bottom: 8px;
+  background-color: #e74c3c;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.weapons li:hover {
+  background-color: #c0392b;
+}
+
+.weapons li.selected, .weapons li.selected:hover{
+  background-color: #6d322b;
+}
+
+.weapons a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.informations{
+  height: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+.informations h3{
+  font-size: 30px;
+}
+
+.informations div {
+  height: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.attribut{
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 20px;
+}
+
+.attribut h4{
+  margin: 0;
+  font-size: 25px;
+}
+
+.attribut span{
+  margin: 0;
+  font-size: 25px;
+}
+

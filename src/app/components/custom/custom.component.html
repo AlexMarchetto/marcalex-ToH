@@ -1,14 +1,69 @@
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/heroes/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-  </li>
-</ul>
-<ul class="weapons">
-  <li *ngFor="let weapon of weapons">
-    <a routerLink="/weapons/detail/{{weapon.id}}">
-      <span class="badge">{{weapon.id}}</span> {{weapon.name}}
-    </a>
-  </li>
-</ul>
+<div class="custom-layout">
+  <!-- Section des héros à gauche -->
+  <div class="heroes-section">
+    <h3>Heroes</h3>
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="selectHero(hero)">
+        <a>
+          {{hero.name}}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Espace central -->
+  <div class="center-section">
+
+    <div *ngIf="!selectedWeapon && !selectedHero">
+      <h3>Details or content will appear here</h3>
+      <!-- Placeholding space for future content -->
+      <div class="details-placeholder">
+        <p>Select an hero and a weapon !</p>
+      </div>
+    </div>
+
+    <div class="hero-informations informations" *ngIf="selectedHero">
+      <h3>{{selectedHero.name | uppercase}}</h3>
+      <div>
+        <div class="attribut"><h4>Attack</h4><span>{{selectedHero.attack}}</span></div>
+        <div class="attribut"><h4>Dogde</h4><span>{{selectedHero.dodge}}</span></div>
+        <div class="attribut"><h4>Damage</h4><span>{{selectedHero.damage}}</span></div>
+        <div class="attribut"><h4>Hp</h4><span>{{selectedHero.hp}}</span></div>
+      </div>
+    </div>
+
+    <div class="weapon-informations informations" *ngIf="selectedWeapon">
+      <h3>{{selectedWeapon.name | uppercase}}</h3>
+      <div>
+        <div class="attribut"><h4>Attack</h4><span>{{selectedWeapon.attack}}</span></div>
+        <div class="attribut"><h4>Dogde</h4><span>{{selectedWeapon.dodge}}</span></div>
+        <div class="attribut"><h4>Damage</h4><span>{{selectedWeapon.damage}}</span></div>
+        <div class="attribut"><h4>Hp</h4><span>{{selectedWeapon.hp}}</span></div>
+      </div>
+    </div>
+
+    <div class="total-informations informations" *ngIf="selectedHero && selectedWeapon">
+      <h3>TOTAL</h3>
+      <div>
+        <div class="attribut"><h4>Attack</h4><span>{{selectedHero.attack + selectedWeapon.attack}}</span></div>
+        <div class="attribut"><h4>Dogde</h4><span>{{selectedHero.dodge + selectedWeapon.dodge}}</span></div>
+        <div class="attribut"><h4>Damage</h4><span>{{selectedHero.damage + selectedWeapon.damage}}</span></div>
+        <div class="attribut"><h4>Hp</h4><span>{{selectedHero.hp + selectedWeapon.hp}}</span></div>
+      </div>
+    </div>
+
+  </div>
+
+    <!-- Section des armes à droite -->
+  <div class="weapons-section">
+    <h3>Weapons</h3>
+    <ul class="weapons">
+      <li *ngFor="let weapon of weapons" [class.selected]="weapon === selectedWeapon" (click)="selectWeapon(weapon)">
+        <a>
+          {{weapon.name}}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+

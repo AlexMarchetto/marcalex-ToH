@@ -76,7 +76,7 @@ export class WeaponService {
   }
 
   async deleteWeapon(id: string): Promise<void>{
-    const weaponDocument = doc(this.firestore, WeaponService.url);
+    const weaponDocument = doc(this.firestore, WeaponService.url+"/"+id);
     return deleteDoc(weaponDocument)
       .then(()=> {
         this.messageService.add(`WeaponService: deleted weapon id=${id}`);

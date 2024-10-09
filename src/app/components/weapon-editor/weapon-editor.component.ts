@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Weapon} from "../../data/weapon.model";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {WeaponService} from "../../services/weapon/weapon.service";
 import {Location, NgIf, UpperCasePipe} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -13,7 +13,8 @@ import { first } from 'rxjs';
     NgIf,
     ReactiveFormsModule,
     UpperCasePipe,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   templateUrl: './weapon-editor.component.html',
   styleUrl: './weapon-editor.component.css'
@@ -53,6 +54,14 @@ export class WeaponEditorComponent implements OnInit{
         // Gérer le cas où le héros n'est pas valide (par exemple, afficher un message d'erreur)
         console.error('Invalid weapon: total points must not equal 0 and each attribute must be between -5 and 5');
       }
+    }
+  }
+
+  delete(): void{
+    if (this.weapon){
+      this.weaponService.deleteWeapon(this.weapon.id).then(() => {
+        this.weapon = undefined;
+      })
     }
   }
 

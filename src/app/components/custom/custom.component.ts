@@ -3,7 +3,7 @@ import {Hero} from "../../data/hero.model";
 import {HeroService} from "../../services/hero/hero.service";
 import {Weapon} from "../../data/weapon.model";
 import {WeaponService} from "../../services/weapon/weapon.service";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf, UpperCasePipe} from "@angular/common";
 import {RouterLink} from "@angular/router";
 
 @Component({
@@ -11,7 +11,9 @@ import {RouterLink} from "@angular/router";
   standalone: true,
   imports: [
     NgForOf,
-    RouterLink
+    RouterLink,
+    NgIf,
+    UpperCasePipe
   ],
   templateUrl: './custom.component.html',
   styleUrl: './custom.component.css'
@@ -19,6 +21,9 @@ import {RouterLink} from "@angular/router";
 export class CustomComponent implements OnInit{
   heroes: Hero[] = [];
   weapons: Weapon[] = [];
+
+  selectedHero: Hero | null = null;
+  selectedWeapon: Weapon | null = null;
 
   constructor(private heroService: HeroService, private weaponService: WeaponService) { }
 
@@ -33,5 +38,22 @@ export class CustomComponent implements OnInit{
 
   getWeapons():void {
     this.weaponService.getWeapons().subscribe(weapon => this.weapons = weapon);
+  }
+
+  selectHero(hero: Hero): void {
+    if (this.selectedHero === hero){
+      this.selectedHero = null;
+    }else{
+      this.selectedHero = hero;
+    }
+  }
+
+  // Fonction de sélection pour les armes
+  selectWeapon(weapon: Weapon): void {
+    if (this.selectedWeapon === weapon){
+      this.selectedWeapon = null;
+    }else{
+      this.selectedWeapon = weapon;
+    }
   }
 }

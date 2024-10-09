@@ -57,3 +57,10 @@ button.btn-add {
 button.btn-add:hover {
   background-color: #2980b9;
 }
+
+/* Remaining points */
+.remaining-points {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #e74c3c;
+}

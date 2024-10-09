@@ -1,5 +1,5 @@
 <div class="hero-add-container" *ngIf="hero">
-  <h2>Ajouter un nouveau héros</h2>
+  <h2>Add New Hero</h2>
   <form (ngSubmit)="add()" class="hero-form">
     <div class="form-group">
       <label for="name">Nom du Héros :</label>
@@ -7,19 +7,23 @@
     </div>
     <div class="form-group">
       <label for="attack">Attaque :</label>
-      <input id="attack" type="number" [(ngModel)]="hero.attack" name="attack" required>
+      <input id="attack" type="number" [(ngModel)]="hero.attack" name="attack" min="1" max ="40" required>
     </div>
     <div class="form-group">
       <label for="dodge">Esquive :</label>
-      <input id="dodge" type="number" [(ngModel)]="hero.dodge" name="dodge" required>
+      <input id="dodge" type="number" [(ngModel)]="hero.dodge" name="dodge" min="1" max ="40" required>
     </div>
     <div class="form-group">
       <label for="damage">Dégâts :</label>
-      <input id="damage" type="number" [(ngModel)]="hero.damage" name="damage" required>
+      <input id="damage" type="number" [(ngModel)]="hero.damage" name="damage" min="1" max ="40" required>
     </div>
     <div class="form-group">
       <label for="hp">Points de vie :</label>
-      <input id="hp" type="number" [(ngModel)]="hero.hp" name="hp" required>
+      <input id="hp" type="number" [(ngModel)]="hero.hp" name="hp" min="1" max ="40" required>
+    </div>
+    <div class="form-group">
+      <label>Remaining Points:</label>
+      <span class="remaining-points">{{ hero.remainingPoints() }}</span>
     </div>
     <button type="submit" class="btn-add">Ajouter Héros</button>
   </form>

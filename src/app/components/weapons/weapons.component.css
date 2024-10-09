@@ -1,54 +1,79 @@
-/* HeroesComponent's private CSS styles */
+/* Global styling for better appearance */
 .weapons {
-  margin: 2rem 0 2em 0;
+  margin: 2rem auto; /* Centering the list */
   list-style-type: none;
   padding: 0;
-  width: 15em;
+  max-width: 400px; /* Make it responsive */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Spacing between heroes */
 }
+.weapons h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
 .weapons li {
   position: relative;
-  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  border-radius: 8px;
+  overflow: hidden; /* To keep the hover effect contained */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .weapons li:hover {
-  left: .1em;
+  transform: translateY(-3px); /* Lift effect */
 }
 
 .weapons a {
-  color: #333;
+  color: #ffffff;
   text-decoration: none;
-  background-color: #EEE;
-  margin: .5em;
-  padding: .3em 0;
-  height: 1.6em;
-  border-radius: 4px;
+  background-color: #e74c3c;
+  padding: 0.75rem 1rem; /* More padding for better spacing */
   display: block;
-  width: 100%;
+  font-size: 1.1rem; /* Slightly larger font */
+  font-weight: 500;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .weapons a:hover {
-  color: #2c3a41;
-  background-color: #e6e6e6;
+  background-color: #c0392b; /* Darker blue on hover */
+  color: #f5f5f5; /* Lighter text color on hover */
 }
 
-.weapons a:active {
-  background-color: #525252;
-  color: #fafafa;
+/* Add Hero button styling */
+.add-weapon-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
-.weapons .badge {
-  display: inline-block;
-  font-size: small;
+.add-weapon-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #2ecc71; /* Green for the add button */
   color: white;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color: #405061;
-  line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  min-width: 16px;
-  text-align: right;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.add-weapon-btn:hover {
+  background-color: #27ae60; /* Darker green on hover */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 600px) {
+  .weapons {
+    max-width: 90%; /* Make the list take more space on small screens */
+  }
+
+  .add-weapon-btn {
+    width: 100%;
+    text-align: center;
+  }
 }

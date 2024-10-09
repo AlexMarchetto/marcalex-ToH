@@ -1,37 +1,39 @@
-<div class="attributs" *ngIf="weapon">
+<div class="weapon-editor" *ngIf="weapon">
   <h2>{{weapon.name | uppercase}} Edits</h2>
+
   <div class="attribut">
     <label for="name">Hero name: </label>
-    <input id="name" [(ngModel)]="weapon.name"
-           placeholder="name">
+    <input id="name" [(ngModel)]="weapon.name" placeholder="name">
   </div>
+
   <div class="attribut">
     <label for="attack">Hero attack: </label>
-    <input id="attack" [(ngModel)]="weapon.attack"
-           placeholder="attack" type="number">
+    <input id="attack" [(ngModel)]="weapon.attack" placeholder="attack" type="number">
   </div>
+
   <div class="attribut">
     <label for="dodge">Hero dodge: </label>
-    <input id="dodge" [(ngModel)]="weapon.dodge"
-           placeholder="dodge" type="number">
+    <input id="dodge" [(ngModel)]="weapon.dodge" placeholder="dodge" type="number">
   </div>
+
   <div class="attribut">
     <label for="damage">Hero damage: </label>
-    <input id="damage" [(ngModel)]="weapon.damage"
-           placeholder="damage" type="number">
+    <input id="damage" [(ngModel)]="weapon.damage" placeholder="damage" type="number">
   </div>
+
   <div class="attribut">
     <label for="hp">Hero hp: </label>
-    <input id="hp" [(ngModel)]="weapon.hp"
-           placeholder="hp" type="number">
+    <input id="hp" [(ngModel)]="weapon.hp" placeholder="hp" type="number">
   </div>
+
   <div class="attribut">
     <label>Remaining Points: </label>
-    <span>{{ weapon.remainingPoints() }}</span>
+    <span class="remaining-points">{{ weapon.remainingPoints() }}</span>
   </div>
   <div class="buttons">
-    <button type="button" (click)="update(weapon.name, weapon.attack, weapon.dodge, weapon.damage,weapon.hp)">Update</button>
-    <button type="button" (click)="goBack()">Go back</button>
+    <button class="btn-primary" type="button" (click)="update(weapon.name, weapon.attack, weapon.dodge, weapon.damage,weapon.hp)">Update</button>
+    <button class="btn-secondary" type="button" (click)="goBack()">Go back</button>
+    <button class="btn-danger" (click)="delete()" routerLink="/weapons">Delete</button>
   </div>
 
 </div>

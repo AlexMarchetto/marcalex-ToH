@@ -1,11 +1,17 @@
-<div *ngIf="weapon">
+<div class ="weapon-detail" *ngIf="weapon">
   <h2>{{weapon.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{ weapon.id }}</div>
-  <div><span>name: </span>{{ weapon.name }}</div>
-  <div><span>attack: </span>{{ weapon.attack }}</div>
-  <div><span>dodge: </span>{{ weapon.dodge }}</div>
-  <div><span>damage: </span>{{ weapon.damage }}</div>
-  <div><span>hp: </span>{{ weapon.hp }}</div>
-  <button type="button" (click)="goBack()">Go back</button>
-  <button type="button" routerLink="/weapons/edit/{{weapon.id}}">Edit</button>
+
+  <div class="weapon-info">
+    <div><span class="label">ID: </span><span>{{ weapon.id }}</span></div>
+    <div><span class="label">Name: </span><span>{{ weapon.name }}</span></div>
+    <div><span class="label">Attack: </span><span>{{ weapon.attack }}</span></div>
+    <div><span class="label">Dodge: </span><span>{{ weapon.dodge }}</span></div>
+    <div><span class="label">Damage: </span><span>{{ weapon.damage }}</span></div>
+    <div><span class="label">HP: </span><span>{{ weapon.hp }}</span></div>
+  </div>
+
+  <div class="weapon-actions">
+    <button class="btn-primary" type="button" (click)="goBack()">Go back</button>
+    <button class="btn-secondary" type="button" routerLink="/weapons/edit/{{weapon.id}}">Edit</button>
+  </div>
 </div>
