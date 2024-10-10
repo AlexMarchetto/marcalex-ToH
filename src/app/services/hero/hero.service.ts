@@ -34,7 +34,8 @@ export class HeroService {
           heroData.attack,
           heroData.dodge,
           heroData.damage,
-          heroData.hp
+          heroData.hp,
+          heroData.isFavorite
         ));
       })
     ) as Observable<Hero[]>;
@@ -53,7 +54,8 @@ export class HeroService {
           data.attack,
           data.dodge,
           data.damage,
-          data.hp
+          data.hp,
+          data.isFavorite
         );
       })
     ) as Observable<Hero>;
@@ -66,7 +68,8 @@ export class HeroService {
       attack: hero.attack,
       dodge: hero.dodge,
       damage: hero.damage,
-      hp: hero.hp
+      hp: hero.hp,
+      isFavorite: hero.isFavorite
     };
     updateDoc(heroDoc, newHeroJSON)
       .then(() => {
@@ -95,7 +98,8 @@ export class HeroService {
       attack: hero.attack,
       dodge: hero.dodge,
       damage: hero.damage,
-      hp: hero.hp
+      hp: hero.hp,
+      isFavorite: hero.isFavorite
     };
 
     return addDoc(heroCollection, newHeroJSON)

@@ -1,19 +1,28 @@
 export class Weapon {
+  get isFavorite(): boolean {
+    return this._isFavorite;
+  }
+
+  set isFavorite(value: boolean) {
+    this._isFavorite = value;
+  }
   private _id: string;
   private _name: string;
   private _attack: number;
   private _dodge: number;
   private _damage: number;
   private _hp: number;
+  private _isFavorite = false;
 
 
-  constructor(id: string, name: string, attack: number, dodge: number, damage: number, hp: number) {
+  constructor(id: string, name: string, attack: number, dodge: number, damage: number, hp: number, isFavorite = false) {
     this._id = id;
     this._name = name;
     this._attack = attack;
     this._dodge = dodge;
     this._damage = damage;
     this._hp = hp;
+    this._isFavorite = isFavorite;
   }
 
   // Méthode pour valider si la répartition des points est correcte

@@ -33,7 +33,8 @@ export class WeaponService {
           weaponData.attack,
           weaponData.dodge,
           weaponData.damage,
-          weaponData.hp
+          weaponData.hp,
+          weaponData.isFavorite
         ));
       })
     ) as Observable<Weapon[]>
@@ -51,7 +52,8 @@ export class WeaponService {
           data.attack,
           data.dodge,
           data.damage,
-          data.hp
+          data.hp,
+          data.isFavorite
         );
       })
     ) as Observable<Weapon>
@@ -64,7 +66,8 @@ export class WeaponService {
       attack: weapon.attack,
       dodge: weapon.dodge,
       damage: weapon.damage,
-      hp: weapon.hp
+      hp: weapon.hp,
+      isFavorite: weapon.isFavorite
     };
     updateDoc(weaponDoc, newWeaponJSON)
       .then(() => {
@@ -93,7 +96,8 @@ export class WeaponService {
       attack: weapon.attack,
       dodge: weapon.dodge,
       damage: weapon.damage,
-      hp: weapon.hp
+      hp: weapon.hp,
+      isFavorite: weapon.isFavorite
     };
 
     return addDoc(weaponCollection, newWeaponJSON)

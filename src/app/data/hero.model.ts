@@ -1,6 +1,13 @@
 import {Weapon} from "./weapon.model";
 
 export class Hero {
+  get isFavorite(): boolean {
+    return this._isFavorite;
+  }
+
+  set isFavorite(value: boolean) {
+    this._isFavorite = value;
+  }
   private _id: string;
   private _name: string;
   private _attack: number;
@@ -8,8 +15,9 @@ export class Hero {
   private _damage: number;
   private _hp: number;
   private _weapon : Weapon | null;
+  private _isFavorite = false;
 
-  constructor(id: string, name: string, attack:number, dodge: number, damage: number, hp: number, weapon: Weapon | null = null) {
+  constructor(id: string, name: string, attack:number, dodge: number, damage: number, hp: number, isFavorite = false, weapon: Weapon | null = null) {
     this._id = id;
     this._name = name;
     this._attack = attack;
@@ -17,6 +25,7 @@ export class Hero {
     this._damage = damage;
     this._hp = hp;
     this._weapon =weapon;
+    this._isFavorite=isFavorite;
   }
 
   // Méthode pour valider si la répartition des points est correcte
@@ -94,5 +103,4 @@ export class Hero {
   set weapon(value: Weapon) {
     this._weapon = value;
   }
-
 }

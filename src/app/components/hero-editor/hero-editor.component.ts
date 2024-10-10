@@ -21,6 +21,8 @@ import {first} from "rxjs";
 })
 export class HeroEditorComponent implements OnInit{
   @Input() hero?: Hero;
+  minimum = 1;
+  maximum = 40;
   constructor(
     private route : ActivatedRoute,
     private heroService: HeroService,
@@ -37,13 +39,14 @@ export class HeroEditorComponent implements OnInit{
       .subscribe(hero => {this.hero = hero;});
   }
 
-  update(name: string, attack:number, dodge:number, damage: number, hp:number):void {
+  update(name: string, attack:number, dodge:number, damage: number, hp:number, isFavorite: boolean):void {
     if (this.hero){
       this.hero.name = name;
       this.hero.attack = attack;
       this.hero.dodge = dodge;
       this.hero.damage = damage;
       this.hero.hp = hp;
+      this.hero.isFavorite = isFavorite;
 
       // Vérifier si le héros est valide après la mise à jour
       if (this.hero.isValid()) {
@@ -68,4 +71,6 @@ export class HeroEditorComponent implements OnInit{
   goBack(): void {
     this.location.back();
   }
+
+  protected readonly Math = Math;
 }

@@ -3,27 +3,31 @@
 
   <div class="attribut">
     <label for="name">Hero name: </label>
-    <input id="name" [(ngModel)]="weapon.name" placeholder="name">
+    <input id="name" [(ngModel)]="weapon.name" placeholder="name" min="{{minimum}}" max="{{maximum}}">
   </div>
 
   <div class="attribut">
     <label for="attack">Hero attack: </label>
-    <input id="attack" [(ngModel)]="weapon.attack" placeholder="attack" type="number">
+    <input id="attack" [(ngModel)]="weapon.attack" placeholder="attack" type="number" min="{{minimum}}" max="{{maximum}}">
   </div>
 
   <div class="attribut">
     <label for="dodge">Hero dodge: </label>
-    <input id="dodge" [(ngModel)]="weapon.dodge" placeholder="dodge" type="number">
+    <input id="dodge" [(ngModel)]="weapon.dodge" placeholder="dodge" type="number" min="{{minimum}}" max="{{maximum}}">
   </div>
 
   <div class="attribut">
     <label for="damage">Hero damage: </label>
-    <input id="damage" [(ngModel)]="weapon.damage" placeholder="damage" type="number">
+    <input id="damage" [(ngModel)]="weapon.damage" placeholder="damage" type="number" min="{{minimum}}" max="{{maximum}}">
   </div>
 
   <div class="attribut">
     <label for="hp">Hero hp: </label>
-    <input id="hp" [(ngModel)]="weapon.hp" placeholder="hp" type="number">
+    <input id="hp" [(ngModel)]="weapon.hp" placeholder="hp" type="number" min="{{minimum}}" max="{{maximum}}">
+  </div>
+  <div class="attribut">
+    <label for="fav">Favorite: </label>
+    <input id="fav" [(ngModel)]="weapon.isFavorite" type="checkbox">
   </div>
 
   <div class="attribut">
@@ -31,7 +35,7 @@
     <span class="remaining-points">{{ weapon.remainingPoints() }}</span>
   </div>
   <div class="buttons">
-    <button class="btn-primary" type="button" (click)="update(weapon.name, weapon.attack, weapon.dodge, weapon.damage,weapon.hp)">Update</button>
+    <button class="btn-primary" type="button" (click)="update(weapon.name, weapon.attack, weapon.dodge, weapon.damage,weapon.hp, weapon.isFavorite)">Update</button>
     <button class="btn-secondary" type="button" (click)="goBack()">Go back</button>
     <button class="btn-danger" (click)="delete()" routerLink="/weapons">Delete</button>
   </div>

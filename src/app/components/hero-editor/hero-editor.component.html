@@ -9,22 +9,27 @@
 
   <div class="attribut">
     <label for="attack">Hero Attack</label>
-    <input id="attack" [(ngModel)]="hero.attack" type="number" placeholder="Attack">
+    <input id="attack" [(ngModel)]="hero.attack" type="number" placeholder="Attack" min="{{minimum}}" max="{{maximum}}">
   </div>
 
   <div class="attribut">
     <label for="dodge">Hero Dodge</label>
-    <input id="dodge" [(ngModel)]="hero.dodge" type="number" placeholder="Dodge">
+    <input id="dodge" [(ngModel)]="hero.dodge" type="number" placeholder="Dodge" min="{{minimum}}" max="{{maximum}}">
   </div>
 
   <div class="attribut">
     <label for="damage">Hero Damage</label>
-    <input id="damage" [(ngModel)]="hero.damage" type="number" placeholder="Damage">
+    <input id="damage" [(ngModel)]="hero.damage" type="number" placeholder="Damage" min="{{minimum}}" max="{{maximum}}">
   </div>
 
   <div class="attribut">
     <label for="hp">Hero HP</label>
-    <input id="hp" [(ngModel)]="hero.hp" type="number" placeholder="HP">
+    <input id="hp" [(ngModel)]="hero.hp" type="number" placeholder="HP" min="{{minimum}}" max="{{maximum}}">
+  </div>
+
+  <div class="attribut">
+    <label for="fav">Favorite</label>
+    <input id="fav" [(ngModel)]="hero.isFavorite" type="checkbox" placeholder="HP">
   </div>
 
   <div class="attribut">
@@ -33,7 +38,7 @@
   </div>
 
   <div class="buttons">
-    <button class="btn-primary" (click)="update(hero.name, hero.attack, hero.dodge, hero.damage, hero.hp)">Update</button>
+    <button class="btn-primary" (click)="update(hero.name, hero.attack, hero.dodge, hero.damage, hero.hp, hero.isFavorite)">Update</button>
     <button class="btn-secondary" (click)="goBack()">Go Back</button>
     <button class="btn-danger" (click)="delete()" routerLink="/heroes">Delete</button>
   </div>

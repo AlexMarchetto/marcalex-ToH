@@ -1,20 +1,25 @@
 <div class="dashborad-container">
+  <div *ngIf="showPopUp">
+    <app-pop-up [message]="'Ceci est un message de pop-up!'" (close)="hidePopUp()"></app-pop-up>
+  </div>
   <div>
-    <h2>Top Heroes</h2>
+    <h2>Favorites Heroes</h2>
     <div class="menu">
       <a *ngFor="let hero of heroes"
          routerLink="/heroes/detail/{{hero.id}}">
         {{hero.name}}
       </a>
+      <span *ngIf="!haveFavoritesHeroes">You don't have any favorite heroes</span>
     </div>
   </div>
   <div>
-    <h2>Top Weapons</h2>
+    <h2>Favorites Weapons</h2>
     <div class ="menu">
       <a *ngFor="let weapon of weapons"
         routerLink="/weapons/detail/{{weapon.id}}">
         {{weapon.name}}
       </a>
+      <span *ngIf="!haveFavoritesWeapons">You don't have any favorite weapons</span>
     </div>
   </div>
 </div>

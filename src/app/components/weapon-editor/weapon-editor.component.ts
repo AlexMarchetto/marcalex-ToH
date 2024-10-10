@@ -21,6 +21,8 @@ import { first } from 'rxjs';
 })
 export class WeaponEditorComponent implements OnInit{
   @Input() weapon?: Weapon;
+  minimum = -5;
+  maximum = 5;
   constructor(
     private route : ActivatedRoute,
     private weaponService : WeaponService,
@@ -37,13 +39,14 @@ export class WeaponEditorComponent implements OnInit{
       .subscribe((weapon => this.weapon = weapon))
   }
 
-  update(name: string, attack:number, dodge:number, damage: number, hp:number):void {
+  update(name: string, attack:number, dodge:number, damage: number, hp:number, isFavorite: boolean):void {
     if (this.weapon){
       this.weapon.name = name;
       this.weapon.attack = attack;
       this.weapon.dodge = dodge;
       this.weapon.damage = damage;
       this.weapon.hp = hp;
+      this.weapon.isFavorite = isFavorite;
 
       // Vérifier si le héros est valide après la mise à jour
       if (this.weapon.isValid()) {
