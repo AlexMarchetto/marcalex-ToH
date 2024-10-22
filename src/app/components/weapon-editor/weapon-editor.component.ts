@@ -5,6 +5,7 @@ import {WeaponService} from "../../services/weapon/weapon.service";
 import {Location, NgIf, UpperCasePipe} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { first } from 'rxjs';
+import {PopUpComponent} from "../pop-up/pop-up.component";
 
 @Component({
   selector: 'app-weapon-editor',
@@ -14,7 +15,8 @@ import { first } from 'rxjs';
     ReactiveFormsModule,
     UpperCasePipe,
     FormsModule,
-    RouterLink
+    RouterLink,
+    PopUpComponent
   ],
   templateUrl: './weapon-editor.component.html',
   styleUrl: './weapon-editor.component.css'
@@ -23,6 +25,9 @@ export class WeaponEditorComponent implements OnInit{
   @Input() weapon?: Weapon;
   minimum = -5;
   maximum = 5;
+  showPopUpValid: boolean = false;
+  showPopUpWrong: boolean = false;
+
   constructor(
     private route : ActivatedRoute,
     private weaponService : WeaponService,
@@ -51,11 +56,10 @@ export class WeaponEditorComponent implements OnInit{
       // Vérifier si le héros est valide après la mise à jour
       if (this.weapon.isValid()) {
         // Si le héros est valide, appeler le service pour sauvegarder les modifications
-        this.weaponService.updateWeapon(this.weapon)
-        this.goBack()
+        this.weaponService.updateWeapon(this.weapon);
+        this.showPopUpValid = true;
       } else {
-        // Gérer le cas où le héros n'est pas valide (par exemple, afficher un message d'erreur)
-        console.error('Invalid weapon: total points must not equal 0 and each attribute must be between -5 and 5');
+        this.showPopUpWrong = true;
       }
     }
   }
@@ -70,5 +74,14 @@ export class WeaponEditorComponent implements OnInit{
 
   goBack(): void {
     this.location.back();
+  }
+
+  // Fonction pour cacher le pop-up
+  hidePopUp(isUpdateOk: boolean = true): void {
+    this.showPopUpValid = false;
+    this.showPopUpWrong = false;
+    if (isUpdateOk){
+      this.goBack()
+    }
   }
 }

@@ -1,3 +1,9 @@
+<div *ngIf="showPopUpValid">
+  <app-pop-up [title]="'Success !'"  [message]="'Hero and weapon was link with success'" (close)="hidePopUp()"></app-pop-up>
+</div>
+<div *ngIf="showPopUpWrong">
+  <app-pop-up [title]="'Problem !'"  [message]="'Your hero can not be be link to this weapon'" (close)="hidePopUp()"></app-pop-up>
+</div>
 <div class="custom-layout">
   <!-- Section des héros à gauche -->
   <div class="heroes-section">
@@ -31,6 +37,8 @@
         <div class="attribut"><h4>Hp</h4><span>{{selectedHero.hp}}</span></div>
       </div>
     </div>
+
+    <button *ngIf="selectedHero && selectedWeapon" (click)="link()">Link</button>
 
     <div class="weapon-informations informations" *ngIf="selectedWeapon">
       <h3>{{selectedWeapon.name | uppercase}}</h3>

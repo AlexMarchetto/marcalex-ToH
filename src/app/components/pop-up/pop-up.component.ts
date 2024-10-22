@@ -8,6 +8,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   styleUrl: './pop-up.component.css'
 })
 export class PopUpComponent {
+  @Input() title: string ='';
   @Input() message: string = ''; // Le message à afficher dans le pop-up
   @Output() close = new EventEmitter<void>(); // Événement déclenché pour fermer le pop-up
 

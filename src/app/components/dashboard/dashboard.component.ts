@@ -24,7 +24,6 @@ export class DashboardComponent implements OnInit {
   weapons: Weapon[] = [];
   haveFavoritesHeroes: boolean = true;
   haveFavoritesWeapons: boolean = true;
-  showPopUp: boolean = true;
 
   constructor(private heroService: HeroService, private weaponService: WeaponService) { }
 
@@ -53,10 +52,5 @@ export class DashboardComponent implements OnInit {
           this.haveFavoritesWeapons = false;
         }
       })
-  }
-
-  // Fonction pour cacher le pop-up
-  hidePopUp(): void {
-    this.showPopUp = false;
   }
 }

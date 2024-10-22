@@ -14,10 +14,10 @@ export class Hero {
   private _dodge: number;
   private _damage: number;
   private _hp: number;
-  private _weapon : Weapon | null;
+  private _weapon : string | null;
   private _isFavorite = false;
 
-  constructor(id: string, name: string, attack:number, dodge: number, damage: number, hp: number, isFavorite = false, weapon: Weapon | null = null) {
+  constructor(id: string, name: string, attack:number, dodge: number, damage: number, hp: number, isFavorite = false, weapon: string | null = null) {
     this._id = id;
     this._name = name;
     this._attack = attack;
@@ -96,11 +96,11 @@ export class Hero {
     this._hp = value;
   }
 
-  get weapon(): Weapon | null {
+  get weapon(): string | null {
     return this._weapon;
   }
 
-  set weapon(value: Weapon) {
+  set weapon(value: string) {
     this._weapon = value;
   }
 }

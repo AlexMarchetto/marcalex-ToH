@@ -12,6 +12,7 @@ import {
   Firestore,
   updateDoc
 } from "@angular/fire/firestore";
+import {WeaponService} from "../weapon/weapon.service";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class HeroService {
 
   private static url = 'Heroes';
 
-  constructor(private messageService: MessageService, private firestore: Firestore) { }
+  constructor(private messageService: MessageService, private firestore: Firestore, private weaponService: WeaponService) { }
 
   getHeroes(): Observable<Hero[]> {
     const heroCollection = collection(this.firestore, HeroService.url)
@@ -35,7 +36,8 @@ export class HeroService {
           heroData.dodge,
           heroData.damage,
           heroData.hp,
-          heroData.isFavorite
+          heroData.isFavorite,
+          heroData.weapon
         ));
       })
     ) as Observable<Hero[]>;
@@ -55,7 +57,8 @@ export class HeroService {
           data.dodge,
           data.damage,
           data.hp,
-          data.isFavorite
+          data.isFavorite,
+          data.weapon
         );
       })
     ) as Observable<Hero>;
@@ -69,7 +72,8 @@ export class HeroService {
       dodge: hero.dodge,
       damage: hero.damage,
       hp: hero.hp,
-      isFavorite: hero.isFavorite
+      isFavorite: hero.isFavorite,
+      weapon: hero.weapon
     };
     updateDoc(heroDoc, newHeroJSON)
       .then(() => {
@@ -99,7 +103,8 @@ export class HeroService {
       dodge: hero.dodge,
       damage: hero.damage,
       hp: hero.hp,
-      isFavorite: hero.isFavorite
+      isFavorite: hero.isFavorite,
+      weapon: null
     };
 
     return addDoc(heroCollection, newHeroJSON)
@@ -111,5 +116,7 @@ export class HeroService {
         throw error;  // On renvoie l'erreur pour que le composant puisse la traiter
       });
   }
+
+
 }
 

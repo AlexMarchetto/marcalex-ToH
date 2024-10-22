@@ -9,6 +9,8 @@ import {WeaponEditorComponent} from "./components/weapon-editor/weapon-editor.co
 import {CustomComponent} from "./components/custom/custom.component";
 import {HeroAddComponent} from "./components/hero-add/hero-add.component";
 import {WeaponAddComponent} from "./components/weapon-add/weapon-add.component";
+import {Erreur404Component} from "./components/erreur-404/erreur-404.component";
+import {ProfilComponent} from "./components/profil/profil.component";
 
 export const routes: Routes = [
   {path: 'heroes', component: HeroesComponent},
@@ -21,5 +23,7 @@ export const routes: Routes = [
   {path: 'weapons/edit/:id', component: WeaponEditorComponent},
   {path: 'custom', component: CustomComponent},
   {path: 'heroes/add', component: HeroAddComponent},
-  {path: 'weapons/add', component: WeaponAddComponent}
+  {path: 'weapons/add', component: WeaponAddComponent},
+  {path: 'profil', component: ProfilComponent},
+  {path: '**', component: Erreur404Component}
 ];

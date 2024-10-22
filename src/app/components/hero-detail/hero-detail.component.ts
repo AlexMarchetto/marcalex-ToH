@@ -5,6 +5,8 @@ import {ActivatedRoute, RouterLink} from "@angular/router";
 import {HeroService} from "../../services/hero/hero.service";
 import {HeroEditorComponent} from "../hero-editor/hero-editor.component";
 import {Hero} from "../../data/hero.model";
+import {WeaponService} from "../../services/weapon/weapon.service";
+import {first} from "rxjs";
 
 @Component({
   selector: 'app-hero-detail',
@@ -21,10 +23,12 @@ import {Hero} from "../../data/hero.model";
 })
 export class HeroDetailComponent implements OnInit{
   @Input() hero?: Hero;
+  weaponName?: string;
   constructor(
     private route : ActivatedRoute,
     private heroService: HeroService,
     private location : Location,
+    private weaponService : WeaponService
   ) {}
 
   ngOnInit(): void {
@@ -34,10 +38,23 @@ export class HeroDetailComponent implements OnInit{
   getHero(): void {
     const id = this.route.snapshot.paramMap.get("id");
     this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero)
+      .subscribe(hero => {
+        this.hero = hero;
+        this.setWeaponName();
+      });
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  setWeaponName(): void{
+    if (this.hero){
+      if (this.hero.weapon != null){
+        this.weaponService.getWeapon(this.hero.weapon).pipe(first())
+          .subscribe(weapon => this.weaponName = weapon.name)
+
+      }
+    }
   }
 }
