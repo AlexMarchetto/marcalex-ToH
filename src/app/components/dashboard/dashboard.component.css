@@ -25,7 +25,7 @@ h2 {
 }
 
 a {
-  background-color: #3f525c;
+  background-color: #d8a60e;
   border-radius: 2px;
   padding: 1rem;
   font-size: 1.2rem;
@@ -52,5 +52,5 @@ a {
 }
 
 a:hover {
-  background-color: #000;
+  background-color: #ae891c;
 }
