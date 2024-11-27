@@ -1,8 +1,59 @@
-<ul class="profils">
-  <h2>attack/dodge/damage/hp</h2>
-  <li *ngFor="let profil of profils">
-    <span>{{profil.hero.name | uppercase}} & {{profil.weapon.name | uppercase}} : {{profil.hero.attack + profil.weapon.attack}} / {{profil.hero.dodge + profil.weapon.dodge}} / {{profil.hero.damage + profil.weapon.damage}} / {{profil.hero.hp + profil.weapon.hp}}</span>
-  </li>
-</ul>
+<section>
+  <div>
+    <label>
+      <input type="checkbox" [(ngModel)]="isFilterActive" (change)="applyFilter()" /> Activer le filtrage
+    </label>
+    <label>
+      <input type="checkbox" [(ngModel)]="isSortActive" (change)="sortProfiles()" /> Activer le tri
+    </label>
+  </div>
 
+  <div *ngIf="isFilterActive">
+    <label for="filterAttribute">Attribut de filtre :</label>
+    <select id="filterAttribute" [(ngModel)]="filter.attribute" (change)="applyFilter()">
+      <option value="attack">Attack</option>
+      <option value="dodge">Dodge</option>
+      <option value="damage">Damage</option>
+      <option value="hp">HP</option>
+    </select>
 
+    <label for="filterOperator">Opérateur de filtre :</label>
+    <select id="filterOperator" [(ngModel)]="filter.operator" (change)="applyFilter()">
+      <option value="greaterThan">Supérieur à</option>
+      <option value="lessThan">Inférieur à</option>
+      <option value="equal">Égal à</option>
+    </select>
+
+    <label for="filterValue">Valeur :</label>
+    <input id="filterValue" type="number" [(ngModel)]="filter.value" (input)="applyFilter()" />
+  </div>
+
+  <div *ngIf="isSortActive">
+    <label for="sortAttribute">Attribut de tri :</label>
+    <select id="sortAttribute" [(ngModel)]="sort.attribute" (change)="sortProfiles()">
+      <option value="attack">Attack</option>
+      <option value="dodge">Dodge</option>
+      <option value="damage">Damage</option>
+      <option value="hp">HP</option>
+    </select>
+
+    <label for="sortDirection">Direction du tri :</label>
+    <select id="sortDirection" [(ngModel)]="sort.direction" (change)="sortProfiles()">
+      <option value="asc">Ascendant</option>
+      <option value="desc">Descendant</option>
+    </select>
+  </div>
+
+  <ul class="profils">
+    <h2>Profils</h2>
+    <li *ngFor="let profil of filteredProfils">
+    <span>{{profil.hero.name | uppercase}} & {{profil.weapon.name | uppercase}} :
+      {{profil.hero.attack}} + {{profil.weapon.attack}} /
+      {{profil.hero.dodge}} + {{profil.weapon.dodge}} /
+      {{profil.hero.damage}} + {{profil.weapon.damage}} /
+      {{profil.hero.hp}} + {{profil.weapon.hp}}
+    </span>
+    </li>
+  </ul>
+
+</section>

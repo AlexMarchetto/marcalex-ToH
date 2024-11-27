@@ -1,9 +1,65 @@
+/* Conteneur principal pour les contrôles */
+div {
+  margin-bottom: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  max-width: 400px;
+}
+
+/* Style des labels de checkbox */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Espacement entre les éléments de formulaire */
+label + label {
+  margin-top: 10px;
+}
+
+/* Style pour les cases à cocher */
+input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+/* Style pour les éléments de formulaire */
+select, input[type="number"] {
+  width: 100%;
+  padding: 6px;
+  margin: 4px 0 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style des options dans les listes déroulantes */
+select {
+  font-size: 14px;
+  background-color: #fff;
+}
+
+/* Style pour les labels des attributs et des opérateurs */
+label[for="filterAttribute"], label[for="filterOperator"],
+label[for="filterValue"], label[for="sortAttribute"],
+label[for="sortDirection"] {
+  display: block;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #555;
+}
+
+
 /* Global styling for better appearance */
 .profils {
   margin: 2rem auto; /* Centering the list */
   list-style-type: none;
   padding: 0;
-  max-width: 400px; /* Make it responsive */
+  max-width: 500px; /* Make it responsive */
   display: flex;
   flex-direction: column;
   gap: 1rem; /* Spacing between heroes */
